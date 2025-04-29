@@ -1,11 +1,11 @@
 import { Component, DestroyRef, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Student } from '../../models/student';
-import { RouterLink } from '@angular/router';
+import { StudentCardComponent } from '../student-card/student-card.component';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [ StudentCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -23,6 +23,11 @@ export class HomeComponent implements OnInit {
       },
       error: err => console.error(err)
     })
+  }
+
+  orderByName() {
+    if (!this.students.length) return  
+    this.students = this.students.sort((s1, s2) => s1.name.localeCompare(s2.name))
 
   }
 

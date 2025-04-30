@@ -1,1 +1,44 @@
-<p>new-student works!</p>
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="name">name</label>
+    <input type="text" id="name" name="name" formControlName="name">
+    @if (showErrors && studentForm.get('name')?.errors) {
+      <p class="error-message">please check out this field</p>
+    }
+  </div>
+
+  <div>
+    <label for="surname">surname</label>
+    <input type="text" id="surname" name="surname" formControlName="surname">
+    @if (showErrors && studentForm.get('surname')?.errors) {
+      <p class="error-message">please check out this field</p>
+    }
+  </div>
+
+  <div>
+    <label for="nationality">nationality</label>
+    <select id="nationality" name="nationality" formControlName="nationality">
+      @for (country of countries; track $index) {
+        <option value="country">{{country}}</option>
+      }
+    </select>
+    @if (showErrors && studentForm.get('nationality')?.errors) {
+      <p class="error-message">please check out this field</p>
+    }
+  </div>
+
+  <div>
+    <label for="birthdate">Birthdate</label>
+    <input type="date" id="birthdate" name="birthdate" formControlName="dob">
+  </div>
+
+  
+
+  @if (studentForm.errors) {
+    <p>horror !!!!!!!!!</p>
+  }
+
+  <button>add</button>
+
+</form>

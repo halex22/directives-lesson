@@ -28,8 +28,15 @@ export class HomeComponent implements OnInit {
   orderByName() {
     if (!this.students.length) return  
     this.students = this.students.sort((s1, s2) => s1.name.localeCompare(s2.name))
-
   }
 
+  orderByAge() {
+    if (!this.students.length) return
+    this.students = this.students.sort((s1, s2) => {
+      const time1 = new Date(s1.dob).getTime()
+      const time2 = new Date(s2.dob).getTime()
+      return time1 - time2
+    })    
+  }
 
 }

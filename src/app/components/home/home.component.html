@@ -1,5 +1,18 @@
-<ul>
-  @for (student of students; track $index) {
-    <li student-card [student-info]="student"> </li>
-  }
-</ul>
+
+@if (students.length) {
+  <div>
+    <button (click)="orderByName()">order by Name</button>
+  </div>
+
+  <div>
+    <button (click)="orderByAge()">order by age</button>
+  </div>
+  
+  <ul>
+    @for (student of students; track $index) {
+      <li student-card [student-info]="student"> </li>
+    }
+  </ul>
+} @else {
+  <p>loading data</p>
+}

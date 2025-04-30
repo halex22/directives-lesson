@@ -3,6 +3,7 @@
 </h2>
 <span>gender: {{student.gender}}</span>
 <p>country: {{student.nationality}}</p>
+<p>age: {{student.dob | date: 'dd/M/y'}}</p>
 <div class="img-container">
   <img src="{{student.imgUrl}}" alt="">
 </div>

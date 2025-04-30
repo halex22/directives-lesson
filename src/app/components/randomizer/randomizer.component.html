@@ -1,1 +1,11 @@
-<p>randomizer works!</p>
+<h2>Randomize students</h2>
+@if (students.length) {
+  <button (click)="randomizeStudents()">randomize students</button>
+  <ul>
+    @for (student of students; track $index) {
+      <li student-card [student-info]="student"></li>
+    } @empty {
+      <p>no students found</p>
+    }
+  </ul>
+}

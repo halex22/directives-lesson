@@ -1,3 +1,37 @@
 @if (student) {
+
+  <dialog id="deleteDialog">
+    <p>Are you sure? </p>
+    <form method="dialog">
+      <button (click)="processDelete()">OK</button>
+      <button class="no-btn">NO</button>
+    </form>
+  </dialog>
+
+  <button (click)="openDialog()">Delete Student</button>
   <h2>{{student.name}} {{student.surname}}</h2>
+  <span>gender: {{student.gender}}</span>
+  <p>country: {{student.nationality}}</p>
+  <p>age: {{student.dob | date: 'dd/M/y'}}</p>
+  <div class="img-container">
+    <img src="{{student.imgUrl}}" alt="">
+  </div>
+  <div>
+    <span ><strong>Marks</strong></span> <br>
+    @for (mark of student.marks; track $index) {
+      <span>{{mark}} - </span>
+    } @empty {
+      <span>No votes available</span>
+    }
+  </div>
+
+  <div>
+    <label for="newMark">add mark</label>
+    <input type="number" name="newMark" id="newMark" [formControl]="newMark">
+
+    @if (isMarkInvalid) {
+      <p class="error-message">no mark can be lower than 0 or higher than 10</p>
+    }
+    <button [disabled]="!newMark.valid" (click)="onMarkAdd()">save</button>
+  </div>
 }

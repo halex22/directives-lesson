@@ -1,43 +1,46 @@
 <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
 
-  <div>
-    <label for="name">name</label>
-    <input type="text" id="name" name="name" formControlName="name">
-    @if (showErrors && studentForm.get('name')?.errors) {
-      <p class="error-message">please check out this field</p>
-    }
+  <h4>Personal Info</h4>
+
+  <div class="full-name">
+    
+    <div>
+      <div class="inline-field">
+        <label for="name">name</label>
+        <input type="text" id="name" name="name" formControlName="name">
+      </div>
+      
+      @if (showErrors('name')) {
+        <p class="error-message">input is required and must be at least 4 chars long</p>
+      }
+    </div>
+  
+    <div >
+      <div class="inline-field">
+        <label for="surname">surname</label>
+        <input type="text" id="surname" name="surname" formControlName="surname">
+      </div>
+
+      @if (showErrors('surname')) {
+        <p class="error-message">input is required and must be at least 4 chars long</p>
+      }
+    </div>
   </div>
 
-  <div>
-    <label for="surname">surname</label>
-    <input type="text" id="surname" name="surname" formControlName="surname">
-    @if (showErrors && studentForm.get('surname')?.errors) {
-      <p class="error-message">please check out this field</p>
-    }
-  </div>
-
-  <div>
+  <div class="inline-field">
     <label for="nationality">nationality</label>
     <select id="nationality" name="nationality" formControlName="nationality">
       @for (country of countries; track $index) {
         <option value="country">{{country}}</option>
       }
     </select>
-    @if (showErrors && studentForm.get('nationality')?.errors) {
-      <p class="error-message">please check out this field</p>
-    }
+
   </div>
 
-  <div>
+  <div class="inline-field">
     <label for="birthdate">Birthdate</label>
     <input type="date" id="birthdate" name="birthdate" formControlName="dob">
   </div>
-
-  
-
-  @if (studentForm.errors) {
-    <p>horror !!!!!!!!!</p>
-  }
 
   <button>add</button>
 

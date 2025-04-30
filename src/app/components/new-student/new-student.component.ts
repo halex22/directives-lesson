@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { countryList } from './contriesArray';
+import { IsValidDate } from './dateValidator';
+import { FormControlOptions } from '@angular/forms';
+
+const commonValidation: FormControlOptions = {
+  validators: [Validators.required, Validators.minLength(4)],
+  // updateOn: 'change'
+}
 
 @Component({
   selector: 'app-new-student',
@@ -13,36 +20,25 @@ export class NewStudentComponent {
   countries = countryList
   
   studentForm = new FormGroup({
-    name: new FormControl<string>('', {
-      validators: [Validators.required, Validators.min(4)]
-    }),
-    surname: new FormControl<string>('', {
-      validators: [Validators.required, Validators.min(4)]
-    }),
-    nationality: new FormControl<string>(this.countries[0], {
-      validators: [Validators.required, Validators.min(4)]
-    }),
+    name: new FormControl<string>('', commonValidation),
+    surname: new FormControl<string>('', commonValidation),
+    nationality: new FormControl<string>(this.countries[0]),
     dob: new FormControl<string>('', {
-      validators: [Validators.required]
+      validators: [Validators.required, IsValidDate()],
+      updateOn: 'change'
     }),
+  }, {updateOn: 'submit'})
 
-  })
-  
-  showErrors = false
-
-  // isControlInvalid(controlName: string) {
-  //   const control = this.studentForm.get(controlName) as AbstractControl
-  //   console.log(control)
-  //   return control.dirty && control.touched && control.errors
-  // }
+  showErrors(controlName: string) {
+    const control = this.studentForm.get(controlName);
+    return control?.invalid && control.touched
+  }
 
   onSubmit() {
-    console.log(this.studentForm)
-    for (const control in this.studentForm.controls) {
-      if (Object.prototype.hasOwnProperty.call(this.studentForm.controls, control)) {
-        const element = this.studentForm.get(control);
-        if (element?.errors) this.showErrors = true
-      }
+
+    if (this.studentForm.invalid) {
+      this.studentForm.markAllAsTouched(); 
+      return;
     }
   }
 }

@@ -1,5 +1,27 @@
-input .ng-invalid {
+input>.ng-invalid {
     background-color: rgb(238, 155, 155);
+}
+
+input, select {
+    margin: 0;
+    
+}
+
+.full-name {
+    display: flex;
+    gap: 1rem;
+    // justify-content: center;
+    
+
+    
+}
+
+.inline-field {
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .error-message {

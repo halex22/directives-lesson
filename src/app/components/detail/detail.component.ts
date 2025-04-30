@@ -22,11 +22,11 @@ export class DetailComponent {
   student?: Student
 
   newMark = new FormControl<number>(0, {
-    validators: [Validators.required, Validators.min(0), Validators.max(10)]
+    validators: [Validators.required, Validators.min(0), Validators.max(10)],
   })
 
   get isMarkInvalid() {
-    return this.newMark.touched && this.newMark.dirty && this.newMark.errors
+    return  this.newMark.errors
   }
 
   constructor() {

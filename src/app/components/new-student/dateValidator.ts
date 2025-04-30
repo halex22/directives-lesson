@@ -4,9 +4,14 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 
-export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
+export function IsValidDate(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = nameRe.test(control.value);
-    return forbidden ? {forbiddenName: {value: control.value}} : null;
+    const userDate = new Date(control.value)
+    const today = new Date()
+    today.setHours(0,0,0,0)
+
+    if (userDate > today) return {invalidDate: true}
+    
+    return null
   };
 }

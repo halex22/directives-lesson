@@ -6,3 +6,22 @@ ul {
 
 }
 
+.sort-area {
+    display: flex;
+    margin-top: 1rem;
+    gap: 1rem;
+
+    div {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            transform: scale(1.1);
+            text-decoration: underline;
+            text-underline-offset: 0.5rem;
+        }
+    }
+
+    
+}
+

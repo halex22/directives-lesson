@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
  
 
 @Component({
@@ -18,6 +19,7 @@ export class DetailComponent {
   route = inject(ActivatedRoute)
   service = inject(DataService)
   router = inject(Router)
+  authService = inject(AuthService)
 
   student?: Student
 

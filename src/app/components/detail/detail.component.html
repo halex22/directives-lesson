@@ -33,13 +33,16 @@
     }
   </div>
 
-  <div>
-    <label for="newMark">add mark</label>
-    <input type="number" name="newMark" id="newMark" [formControl]="newMark">
+  @if (authService.isAuth) {
+    <div>
+      <label for="newMark">add mark</label>
+      <input type="number" name="newMark" id="newMark" [formControl]="newMark">
+  
+      @if (isMarkInvalid) {
+        <p class="error-message">no mark can be lower than 0 or higher than 10</p>
+      }
+      <button [disabled]="!newMark.valid" (click)="onMarkAdd()">save</button>
+    </div>
+  }
 
-    @if (isMarkInvalid) {
-      <p class="error-message">no mark can be lower than 0 or higher than 10</p>
-    }
-    <button [disabled]="!newMark.valid" (click)="onMarkAdd()">save</button>
-  </div>
 }

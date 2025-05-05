@@ -1,8 +1,10 @@
 <header>
   <nav>
-    <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['home']">Home</a>
     <a [routerLink]="['randomize']">Randomize</a>
-    <a [routerLink]="['addStudent']">Add Student</a>
+    <a *ngIf="!authService.isAuth" [routerLink]="['login']">login</a>
+    <a *ngIf="authService.isAuth" (click)="logOut()">logout </a>
+    <a *ngIf="authService.isAuth" [routerLink]="['addStudent']">Add Student</a>
   </nav>
 </header>
 

@@ -3,6 +3,8 @@ import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { RandomizerComponent } from './components/randomizer/randomizer.component';
 import { NewStudentComponent } from './components/new-student/new-student.component';
+import { authGuard } from './guards/auth.guard';
+import { LogInComponent } from './components/auth/log-in/log-in.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +27,18 @@ export const routes: Routes = [
   {
     path: 'addStudent',
     component: NewStudentComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'login', 
+    component: LogInComponent
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./components/auth/register/register.component').then(
+        c => c.RegisterComponent
+      )
   },
   {
     path: '**',
@@ -33,4 +47,5 @@ export const routes: Routes = [
         (c) => c.NotFoundComponent
       ),
   },
+
 ];

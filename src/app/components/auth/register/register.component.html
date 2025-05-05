@@ -1,0 +1,25 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="">email</label>
+    <input type="email" name="" id="" formControlName="email">
+  </div>
+
+  <fieldset>
+    <div>
+      <label for="">Password</label>
+      <input type="password" formControlName="password1">
+    </div>
+
+    <div>
+      <label for="">Confirm password</label>
+      <input type="password" formControlName="password2">
+    </div>
+  </fieldset>
+
+  @if (registerForm.errors) {
+    <p>{{registerForm.errors['message']}}</p>
+  }
+
+  <button>Register</button>
+</form>

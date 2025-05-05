@@ -3,6 +3,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 3rem;
+    padding: 0  1rem;
 
 }
 
@@ -23,5 +24,9 @@ ul {
     }
 
     
+}
+
+svg {
+    fill: black;
 }
 

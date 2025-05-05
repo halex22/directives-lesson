@@ -1,25 +1,67 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="text-center">
+  <h2 class="text-gray-600">Welcome to Student manager</h2>
+  <small class="text-gray-400">thanks for creating an account !</small>
+</div>
 
-  <div>
-    <label for="">email</label>
-    <input type="email" name="" id="" formControlName="email">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mt-4">
+
+  <div >
+    <label class="mb-2 text-sm text-slate-800">
+        email
+    </label>
+    <input
+    type="email"
+    formControlName="email"  
+    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="email..." />
   </div>
 
+  @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
+    <small class="error-msg">Not a valid email provided</small>
+  }
+  
+
   <fieldset>
-    <div>
-      <label for="">Password</label>
-      <input type="password" formControlName="password1">
+    <div >
+      <label class=" ">
+          password
+      </label>
+      <input
+      type="password"
+
+      formControlName="password1"  
+        class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" 
+        placeholder="Type a strong..." />
+
+      @if (registerForm.get('password1')?.errors && registerForm.get('password1')?.touched) {
+        <small class="error-msg">password is required</small>
+      }
     </div>
 
-    <div>
-      <label for="">Confirm password</label>
-      <input type="password" formControlName="password2">
+    
+
+    
+    <div >
+      <label class=" mb-2 text-sm text-slate-600">
+          Confirm Password
+      </label>
+      <input
+      formControlName="password2" 
+      type="password"
+      class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" 
+      placeholder="Confirm your password.." />
+
+      @if (registerForm.get('password2')?.errors && registerForm.get('password2')?.touched) {
+        <small class="error-msg">password is required</small>
+      }
     </div>
+
   </fieldset>
 
   @if (registerForm.errors) {
-    <p>{{registerForm.errors['message']}}</p>
+    <p class="text-red-400">{{registerForm.errors['message']}}</p>
   }
 
-  <button>Register</button>
+  <button class="submit-btn" [disabled]="registerForm.invalid">
+    register
+  </button>
 </form>

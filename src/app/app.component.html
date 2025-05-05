@@ -1,11 +1,13 @@
+
 <header>
-  <nav>
-    <a [routerLink]="['home']">Home</a>
-    <a [routerLink]="['randomize']">Randomize</a>
+  <nav class="block w-full max-w-screen-lg px-4 py-2 mx-auto bg-white shadow-md rounded-md lg:px-8 lg:py-3 mt-2">
+    <a [routerLink]="['home']">home</a>
+    <a [routerLink]="['randomize']">randomize</a>
     <a *ngIf="!authService.isAuth" [routerLink]="['login']">login</a>
     <a *ngIf="authService.isAuth" (click)="logOut()">logout </a>
     <a *ngIf="authService.isAuth" [routerLink]="['addStudent']">Add Student</a>
   </nav>
+
 </header>
 
 <main>

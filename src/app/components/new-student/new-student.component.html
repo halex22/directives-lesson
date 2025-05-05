@@ -1,24 +1,39 @@
-<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="">
 
   <h4>Personal Info</h4>
 
-  <div class="full-name">
+  <div class="full-name mt-8">
     
     <div>
-      <div class="inline-field">
-        <label for="name">name</label>
-        <input type="text" id="name" name="name" formControlName="name">
+      <div class="w-full max-w-sm min-w-[200px]">
+        <div class="relative">
+          <input
+          formControlName="name"
+            class="peer w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+          />
+          <label class="absolute cursor-text bg-white px-1 left-2.5 top-2.5 text-slate-400 text-sm transition-all transform origin-left peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-slate-400 peer-focus:scale-90">
+            Name...
+          </label>
+        </div>
       </div>
+
       
       @if (showErrors('name')) {
-        <p class="error-message">input is required and must be at least 4 chars long</p>
+        <p class="error-message ">input is required and must be at least 4 chars long</p>
       }
     </div>
   
     <div >
-      <div class="inline-field">
-        <label for="surname">surname</label>
-        <input type="text" id="surname" name="surname" formControlName="surname">
+      <div class="w-full max-w-sm min-w-[200px]">
+        <div class="relative">
+          <input
+          formControlName="surname"
+            class="peer w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+          />
+          <label class="absolute cursor-text bg-white px-1 left-2.5 top-2.5 text-slate-400 text-sm transition-all transform origin-left peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-slate-400 peer-focus:scale-90">
+            Surname...
+          </label>
+        </div>
       </div>
 
       @if (showErrors('surname')) {
@@ -27,21 +42,32 @@
     </div>
   </div>
 
-  <div class="inline-field">
-    <label for="nationality">nationality</label>
-    <select id="nationality" name="nationality" formControlName="nationality">
-      @for (country of countries; track $index) {
-        <option value="country">{{country}}</option>
-      }
-    </select>
-
+  <div class="w-full max-w-sm min-w-[200px]">
+    <label class="block mb-1 text-sm text-slate-400">
+        Your Country
+    </label>
+    
+    <div class="relative">
+      <select
+          class="w-full bg-transparent placeholder:text-slate-600 text-slate-600 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
+          @for (country of countries; track $index) {
+            <option value="country" class="text-slate-400">{{country}}</option>
+          }
+      </select>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-700">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+      </svg>
+    </div>
   </div>
 
-  <div class="inline-field">
+
+  <div class="inline-field mt-2 text-slate-600">
     <label for="birthdate">Birthdate</label>
     <input type="date" id="birthdate" name="birthdate" formControlName="dob">
   </div>
 
-  <button>add</button>
+  <button>Register</button>
+
+
 
 </form>

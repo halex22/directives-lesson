@@ -1,5 +1,9 @@
-input>.ng-invalid {
-    background-color: rgb(238, 155, 155);
+// input>.ng-invalid {
+//     background-color: rgb(238, 155, 155);
+// }
+
+form {
+    @apply flex flex-col justify-center items-center
 }
 
 input, select {
@@ -7,23 +11,22 @@ input, select {
     
 }
 
+button {
+    @apply rounded-md  py-2 px-4 border border-transparent text-center text-sm 
+    text-slate-400 transition-all shadow-md hover:shadow-lg
+    focus:bg-slate-700/20 focus:shadow-none active:bg-slate-700 hover:bg-slate-700/30 
+    active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2
+}
+
 .full-name {
     display: flex;
     gap: 1rem;
-    // justify-content: center;
-    
-
-    
 }
 
-.inline-field {
-    display: flex;
-    justify-content: start;
-    align-items: flex-end;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
+
 
 .error-message {
     color: rgb(238, 155, 155);
+
+    @apply mt-2 text-xs
 }

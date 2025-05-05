@@ -1,9 +1,9 @@
-<h2>
+<h2 class="text-center font-bold text-lg mb-4 ">
   <a [routerLink]="['/detail', student.id]">{{student.name}} {{student.surname}}</a>
 </h2>
-<span>gender: {{student.gender}}</span>
+<span class="">gender: {{student.gender}}</span>
 <p>country: {{student.nationality}}</p>
 <p>age: {{student.dob | date: 'dd/M/y'}}</p>
-<div class="img-container">
-  <img src="{{student.imgUrl}}" alt="">
+<div class="p-2">
+  <img class="rounded-full border-4 border-gray-200 " src="{{student.imgUrl}}" alt="">
 </div>

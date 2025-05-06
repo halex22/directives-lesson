@@ -15,15 +15,15 @@ import { UserFormData } from '../../../models/user';
 export class LogInComponent {
   authService = inject(AuthService)
   route = inject(Router)
-  loading = true
+  loading = false
 
   errorMessage: string | null = null
 
   loginForm = new FormGroup({
-    email: new FormControl('anotheruser@mgail.com', {
+    email: new FormControl('', {
       validators: [Validators.required, Validators.email]
     }),
-    password: new FormControl('zxcs', {
+    password: new FormControl('', {
       validators: [Validators.required]
     })
   })
@@ -38,6 +38,7 @@ export class LogInComponent {
     this.loading = true
     try {
       await this.authService.LogInUser(this.formData)
+      this.authService.isAuth = true
       this.route.navigate(['/home'])
     } catch (err) {
       this.errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';

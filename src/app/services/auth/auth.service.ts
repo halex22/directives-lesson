@@ -19,8 +19,7 @@ export class AuthService {
       const userExists = await this.isUserRegistered(newUserData.email)
       console.log(userExists, 'does user exists ?')
       if (userExists) {
-        alert('user already registered, please log in instead')
-        throw new Error('User registered')
+        throw new Error('user already registered, please log in instead')
       }
 
       const res = await fetch(this.url.toString(), {
@@ -31,10 +30,9 @@ export class AuthService {
 
       if (!res.ok) throw new Error('failed to register user')
       const data = await res.json()
-      console.log(data)
       return data 
     } catch (err) {
-      console.error('Registration error:', err);
+      throw new Error(err instanceof Error ? err.message : 'Registration Failed')
     }
   }
 

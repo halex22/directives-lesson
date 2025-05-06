@@ -1,3 +1,8 @@
+<div class="text-center">
+  <h2 class="text-gray-600">Nice to see you again</h2>
+  <small class="text-gray-400">please fill up the form</small>
+</div>
+
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div >
     <label class="mb-2 text-sm text-slate-800"> email</label>
@@ -47,8 +52,9 @@
       <span class="block mt-2 text-slate-500">loading...</span>
     </div>
   }
-  <small class="block">if you don't have an account please 
-    <a class="text-blue-400 hover:text-blue-600 underline underline-offset-2 text-lg" [routerLink]="['/register']">register</a>
+  <small class="block">
+    <span class="text-slate-400">if you don't have an account please </span>
+    <a class="text-blue-400 hover:text-blue-600  text-lg" [routerLink]="['/register']">register</a>
   </small>
 </form>
 

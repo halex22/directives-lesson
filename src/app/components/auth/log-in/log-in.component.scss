@@ -15,7 +15,7 @@ input.ng-valid {
 }
 
 :host {
-    @apply flex justify-center min-h-[80dvh] items-center
+    @apply flex flex-col justify-center items-center min-h-[80dvh] items-center
 }
 
 form {

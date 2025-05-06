@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AuthService } from './services/auth/auth.service';
 import { CommonModule } from '@angular/common';
@@ -13,8 +13,10 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
 
   authService = inject(AuthService)
+  router = inject(Router)
 
   logOut() {
     this.authService.isAuth = false
+    this.router.navigate(['/home'])
   }
 }

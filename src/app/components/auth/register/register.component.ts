@@ -19,6 +19,8 @@ export class RegisterComponent {
   router = inject(Router)
   registerError: string | null = null
 
+  loading = false
+
   registerForm = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email]
@@ -43,13 +45,15 @@ export class RegisterComponent {
   }
 
   async onSubmit() {
-
+    this.loading = true
     try {
       await this.authService.RegisterUser(this.formData) as User
       this.authService.isAuth = true
       this.router.navigate(['/home'])
     } catch (error) {
       this.registerError = error instanceof Error ? error.message : 'An unknown error occurred.'
+    } finally {
+      this.loading = false
     }
   }
 
